@@ -77,10 +77,10 @@ class Thymio {
         return 'ws://127.0.0.1:8597';
     }
     static get VMIN () {
-        return -500;
+        return -400;
     }
     static get VMAX () {
-        return 500;
+        return 400;
     }
     static get LMIN () {
         return 0;
@@ -390,16 +390,15 @@ class Thymio {
         this.requestSendQmotion(args, 2, callback);
     }
     turn (angle, callback) {
-        angle = parseInt(angle, 10);
+        angle = parseInt(angle, 10) * 0.78;
         let speed;
         let time;
-        if (Math.abs(angle) > 90) {
-            speed = 65 * 32 / 10;
-            time = Math.abs(angle) * 1.3;
+        if (Math.abs(angle) > 45) {
+            speed = 60 * 32 / 10;
+            time = Math.abs(angle) * 100 / 60;
         } else {
-            speed = 43 * 32 / 10;
-            time = Math.abs(angle) * 2.0;
-            time = angle * angle * 2.0 / ((Math.abs(angle) * 1.016) - 0.52); // nonlinear correction
+            speed = 30 * 32 / 10;
+			time = Math.abs(angle) * 100 / 30;
         }
 
         const args = Array();
@@ -795,9 +794,9 @@ class Thymio {
         if (odo === 'direction') {
             return this.cachedValues.get('odo.degree')/1;
         } else if (odo === 'x') {
-            return this.cachedValues.get('odo.x') / 28;
+            return this.cachedValues.get('odo.x') / 31.7;
         } else if (odo === 'y') {
-            return this.cachedValues.get('odo.y') / 28;
+            return this.cachedValues.get('odo.y') / 31.7;
         }
     }
     motor (motor) {
