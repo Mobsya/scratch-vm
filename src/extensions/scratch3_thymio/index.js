@@ -390,7 +390,7 @@ class Thymio {
         this.requestSendQmotion(args, 2, callback);
     }
     turn (angle, callback) {
-        angle = parseInt(angle, 10) * 0.78;
+        angle = parseInt(angle, 10) * 0.785;
         let speed;
         let time;
         if (Math.abs(angle) > 45) {
@@ -411,7 +411,7 @@ class Thymio {
        this.requestSendQmotion(args, 2, callback);
     }
     turnWithSpeed (angle, speed, callback) {
-        angle = parseInt(angle, 10) * 0.78;
+        angle = parseInt(angle, 10) * 0.785;
         speed = parseInt(Math.abs(speed), 10);
         speed = parseInt(clamp(speed, Thymio.VMIN * 10 / 32, Thymio.VMAX * 10 / 32), 10);
 
@@ -439,7 +439,7 @@ class Thymio {
         }
     }
     turnWithTime (angle, time, callback) {
-        angle = parseInt(angle, 10) * 0.78;
+        angle = parseInt(angle, 10) * 0.785;
         time = parseInt(Math.abs(time), 10);
 
         let speed = Math.abs(angle) / time; // time measured in 100 Hz ticks

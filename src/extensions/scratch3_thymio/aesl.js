@@ -218,7 +218,7 @@ sub motion_cancel
 
 onevent motor
   odo.delta = (motor.right.target + motor.left.target) / 2
-  call math.muldiv(tmp[0], (motor.left.target - motor.right.target), 3698, 10000)
+  call math.muldiv(tmp[0], (motor.left.target - motor.right.target), 3695, 10000)
   odo.theta += tmp[0]
   call math.cos(tmp[0:1],[odo.theta,16384-odo.theta])
   call math.muldiv(tmp[0:1], [odo.delta,odo.delta],tmp[0:1], [32767,32767])
